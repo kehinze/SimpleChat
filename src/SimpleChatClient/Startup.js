@@ -5,7 +5,6 @@ angular
   .module('Application', [
     'ngRoute',
     'SimpleChat',
-    'ui.bootstrap',
     'ui.notify'
   ])
   .config(function ($routeProvider, $httpProvider, $provide) {
