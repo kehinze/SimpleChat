@@ -24,24 +24,24 @@ angular.module('SimpleChat')
                  }
           };        
       }])
-	.factory('SimpleChatJsonService', function($rootScope, simpleCsvApiUrl, jsonService){
+	.factory('SimpleChatJsonService', function($rootScope, simpleChatApiUrl, jsonService){
 
 	    return{
                  Get: function(restMethod, parameters){
-                    return jsonService.Get(simpleCsvApiUrl, restMethod, parameters);
+                    return jsonService.Get(simpleChatApiUrl, restMethod, parameters);
                  },
                  Put: function(restMethod, data){
-                    return jsonService.Put(simpleCsvApiUrl, restMethod, data);    
+                    return jsonService.Put(simpleChatApiUrl, restMethod, data);    
                  },
                  Post: function(restMethod, data){
-                    return jsonService.Post(simpleCsvApiUrl, restMethod, data);    
+                    return jsonService.Post(simpleChatApiUrl, restMethod, data);    
                  },
                  Delete: function(restMethod, data){
-                    return jsonService.Delete(simpleCsvApiUrl, restMethod, data);    
+                    return jsonService.Delete(simpleChatApiUrl, restMethod, data);    
                  }
           };  
 	})
-	.factory('SimpleChatApiService', function(SimpleCsvJsonService){
+	.factory('SimpleChatApiService', function(SimpleChatJsonService){
 
 		return {
         GetUsers: function(){

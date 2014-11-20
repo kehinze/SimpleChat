@@ -1,10 +1,11 @@
 angular.module('SimpleChat')
-	.controller('UsersController', function($scope, SimpleChatSignalRService, notificationService){
+	.controller('UsersController', function($scope, SimpleChatApiService, notificationService){
 
 		$scope.Users = [];
 
-		$scope.$on('UsersUpdated', function(event, result){
-			$scope.Users = result.Users;
+		$scope.$on('UserSubscribed', function(event, user){
+			$scope.Users.push(user);
+			$scope.$apply();
 		});
 
 		var init = function(){
@@ -15,11 +16,13 @@ angular.module('SimpleChat')
 			}
 		}
 
-		var onUsersReceived = function(user){
+		var onUsersReceived = function(users){
 			$scope.Users = users;
 		};
 
 		var onError = function(result){
 			notificationService.error(result.Message);
 		};
+
+		init();
 	});

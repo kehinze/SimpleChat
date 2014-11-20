@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using SimpleChat.Api.Repository;
@@ -20,6 +22,14 @@ namespace SimpleChat.Api.Controllers
             var users = inMemoryUserRepository.All();
 
             return Request.CreateResponse(HttpStatusCode.OK, users);
+        }
+
+        public void adad(object[] objects)
+        {
+            if (objects.Count() == 0)
+            {
+                
+            }
         }
     }
 }

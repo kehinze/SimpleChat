@@ -12,23 +12,23 @@ namespace SimpleChat.Api.Repository
 
     public class InMemoryUserRepository
     {
-        private readonly Dictionary<Guid, User> userRepository = new Dictionary<Guid, User>(); 
+        private static readonly Dictionary<Guid, User> UserRepository = new Dictionary<Guid, User>(); 
 
         public void Add(User user)
         {
-            if(!userRepository.ContainsKey(user.ConnectionId))
-                userRepository.Add(user.ConnectionId, user);
+            if(!UserRepository.ContainsKey(user.ConnectionId))
+                UserRepository.Add(user.ConnectionId, user);
         }
 
         public void Remove(Guid connectionId)
         {
-            if (userRepository.ContainsKey(connectionId))
-                userRepository.Remove(connectionId);
+            if (UserRepository.ContainsKey(connectionId))
+                UserRepository.Remove(connectionId);
         }
 
         public IEnumerable<User> All()
         {
-            return userRepository.Select(c => c.Value);
+            return UserRepository.Select(c => c.Value);
         }
     }
 }

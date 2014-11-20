@@ -121,13 +121,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Event\IEvent.cs" />
-    <Compile Include="Event\UserDto.cs" />
     <Compile Include="Event\UserSubscribed.cs" />
-    <Compile Include="Event\UsersUpdated.cs" />
-    <Compile Include="Extentions\DtoExtentions.cs" />
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Messaging\SignalRPublisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

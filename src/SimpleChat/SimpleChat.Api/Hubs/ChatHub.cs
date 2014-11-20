@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 using SimpleChat.Api.Event;
-using SimpleChat.Api.Extentions;
 using SimpleChat.Api.Messaging;
 using SimpleChat.Api.Repository;
 
@@ -22,13 +20,7 @@ namespace SimpleChat.Api.Hubs
                 NickName = nickName
             });
 
-            signalRPublisher.Publish(new UserSubscribed(nickName));
-
-            var users = inMemoryRepository.All().ToArray();
-
-            var userDtos = users.ToDtos();
-
-            signalRPublisher.Publish(new UsersUpdated(userDtos));
+            signalRPublisher.Publish(new UserSubscribed(Guid.Parse(Context.ConnectionId), nickName));
         }
 
         public override Task OnDisconnected(bool stopCalled)

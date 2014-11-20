@@ -9,6 +9,11 @@ angular.module('SimpleChat')
      		},
      		SetNickName: function(nickName){
      			 $rootScope.NickName = nickName;
+     		},
+     		IsNickNameEqual: function(nickName){
+     			if($rootScope.NickName == nickName)
+     				return true;
+     			return false;
      		}
      	};
 	});

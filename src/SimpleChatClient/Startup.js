@@ -6,7 +6,8 @@ angular
     'ngRoute',
     'SimpleChat',
     'ui.notify',
-    'SignalR'
+    'SignalR',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, $httpProvider, $provide) {
          

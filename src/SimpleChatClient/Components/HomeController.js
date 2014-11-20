@@ -1,7 +1,5 @@
 angular.module('SimpleChat')
-	.controller('HomeController', function(){
+	.controller('HomeController', function($scope, $location, SimpleChatService){
 
-		$scope.$on('UserSubscrived', function(){
-
-		});
+		
 	});
