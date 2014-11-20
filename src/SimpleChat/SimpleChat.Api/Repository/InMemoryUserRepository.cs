@@ -10,7 +10,7 @@ namespace SimpleChat.Api.Repository
         public string NickName { get; set; }
     }
 
-    public class InMemoryRepository
+    public class InMemoryUserRepository
     {
         private readonly Dictionary<Guid, User> userRepository = new Dictionary<Guid, User>(); 
 

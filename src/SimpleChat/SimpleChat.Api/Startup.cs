@@ -7,6 +7,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Owin;
 using SimpleChat.Api;
+using SimpleChat.Api.Repository;
 
 [assembly: OwinStartup(typeof(Startup))]
 namespace SimpleChat.Api
@@ -22,6 +23,7 @@ namespace SimpleChat.Api
         {
             var container = new ContainerBuilder();
             container.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
+            container.RegisterType<InMemoryUserRepository>().InstancePerRequest();
             var builtContainer = container.Build();
 
             app.UseCors(CorsOptions.AllowAll);

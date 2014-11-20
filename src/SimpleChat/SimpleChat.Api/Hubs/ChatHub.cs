@@ -14,7 +14,7 @@ namespace SimpleChat.Api.Hubs
         public void SubscribeUser(string nickName)
         {
             var signalRPublisher = new SignalRPublisher();
-            var inMemoryRepository = new InMemoryRepository();
+            var inMemoryRepository = new InMemoryUserRepository();
 
             inMemoryRepository.Add(new User
             {
@@ -33,7 +33,7 @@ namespace SimpleChat.Api.Hubs
 
         public override Task OnDisconnected(bool stopCalled)
         {
-            var inMemoryRepository = new InMemoryRepository();
+            var inMemoryRepository = new InMemoryUserRepository();
 
             inMemoryRepository.Remove(Guid.Parse(Context.ConnectionId));
 

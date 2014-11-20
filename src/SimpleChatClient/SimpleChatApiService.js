@@ -44,6 +44,10 @@ angular.module('SimpleChat')
 	.factory('SimpleChatApiService', function(SimpleCsvJsonService){
 
 		return {
-      
+        GetUsers: function(){
+          var route = 'Users';
+
+          return SimpleChatJsonService.Get(route, null);
+        }
 		}
 	});
