@@ -1,8 +1,11 @@
-﻿using System.Security.Claims;
-using System.Security.Principal;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 using SimpleChat.Api.Event;
+using SimpleChat.Api.Extentions;
 using SimpleChat.Api.Messaging;
+using SimpleChat.Api.Repository;
 
 namespace SimpleChat.Api.Hubs
 {
@@ -10,7 +13,31 @@ namespace SimpleChat.Api.Hubs
     {
         public void SubscribeUser(string nickName)
         {
-            new SignalRPublisher().Publish(new UserSubscribed(nickName));
+            var signalRPublisher = new SignalRPublisher();
+            var inMemoryRepository = new InMemoryRepository();
+
+            inMemoryRepository.Add(new User
+            {
+                ConnectionId = Guid.Parse(Context.ConnectionId),
+                NickName = nickName
+            });
+
+            signalRPublisher.Publish(new UserSubscribed(nickName));
+
+            var users = inMemoryRepository.All().ToArray();
+
+            var userDtos = users.ToDtos();
+
+            signalRPublisher.Publish(new UsersUpdated(userDtos));
+        }
+
+        public override Task OnDisconnected(bool stopCalled)
+        {
+            var inMemoryRepository = new InMemoryRepository();
+
+            inMemoryRepository.Remove(Guid.Parse(Context.ConnectionId));
+
+            return base.OnDisconnected(stopCalled);
         }
     }
 }
