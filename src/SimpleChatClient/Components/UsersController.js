@@ -9,11 +9,9 @@ angular.module('SimpleChat')
 		});
 
 		var init = function(){
-			if($scope.Users.length == 0){
-				SimpleChatApiService.GetUsers()
+			SimpleChatApiService.GetUsers()
 				.success(onUsersReceived)
 				.error(onError);
-			}
 		}
 
 		var onUsersReceived = function(users){
