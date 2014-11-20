@@ -5,7 +5,8 @@ angular
   .module('Application', [
     'ngRoute',
     'SimpleChat',
-    'ui.notify'
+    'ui.notify',
+    'SignalR'
   ])
   .config(function ($routeProvider, $httpProvider, $provide) {
          

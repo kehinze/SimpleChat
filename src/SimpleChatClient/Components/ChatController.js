@@ -1,4 +1,5 @@
 angular.module('SimpleChat')
-	.controller('ChatController', function(){
+	.controller('ChatController', function($scope, SimpleChatSignalRService, notificationService){
+
 		
 	});

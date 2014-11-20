@@ -1,12 +1,16 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using System.Security.Claims;
+using System.Security.Principal;
+using Microsoft.AspNet.SignalR;
+using SimpleChat.Api.Event;
+using SimpleChat.Api.Messaging;
 
 namespace SimpleChat.Api.Hubs
 {
     public class ChatHub : Hub
     {
-        public void Send(string name, string message)
+        public void SubscribeUser(string nickName)
         {
-            Clients.All.addNewMessageToPage(name, message);
+            new SignalRPublisher().Publish(new UserSubscribed(nickName));
         }
     }
 }
