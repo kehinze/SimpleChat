@@ -8,9 +8,6 @@ angular.module('SimpleChat')
 	            }
 	        },
 	        methods: ['SubscribeUser'],
-	        queryParams:{
-	            'token': 'exampletoken'
-	        },
 	        rootPath: simpleChatSignalrUrl,
 	        errorHandler: function(error){
 	            console.error(error);
