@@ -23,13 +23,5 @@ namespace SimpleChat.Api.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, users);
         }
-
-        public void adad(object[] objects)
-        {
-            if (objects.Count() == 0)
-            {
-                
-            }
-        }
     }
 }
