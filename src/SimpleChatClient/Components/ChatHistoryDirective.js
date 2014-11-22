@@ -7,6 +7,7 @@ angular.module('SimpleChat')
              controller: 'ChatHistoryController',
              scope: {
                     user: '=',
+                    chats: '='
              }
          }
 	});

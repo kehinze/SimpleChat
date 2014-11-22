@@ -21,6 +21,9 @@ namespace SimpleChat.Api.Events
         [DataMember(Name = "Message")]
         public string Message { get; protected set; }
 
+        [DataMember(Name = "Created")]
+        public DateTime Created { get; protected set; }
+
         public ChatReceived(Guid fromUserId, string fromNickName, Guid toUserId, string toNickName, string message)
         {
             FromUserId = fromUserId;
@@ -28,6 +31,7 @@ namespace SimpleChat.Api.Events
             ToUserId = toUserId;
             ToNickName = toNickName;
             Message = message;
+            Created = DateTime.Now;
         }
     }
 }

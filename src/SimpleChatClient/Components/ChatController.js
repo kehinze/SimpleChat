@@ -1,6 +1,13 @@
 angular.module('SimpleChat')
 	.controller('ChatController', function($scope, $rootScope, SimpleChatSignalRService, notificationService){
 
+		$scope.Chats = [];
+
+		$scope.$on('ChatReceived', function(event, result){
+			$scope.Chats.push(result);
+			$scope.$apply();
+		});	
+		
 		$scope.AreUsersPresent = false;
 
 		$scope.SelectedUser = {
@@ -36,7 +43,7 @@ angular.module('SimpleChat')
 			if($scope.IsCurrentUser(user.NickName)){
 				$scope.SelectedUser = users[1];
 			}else{
-				$scope.SelectedUser = user[0];
+				$scope.SelectedUser = users[0];
 			}
 		};
 

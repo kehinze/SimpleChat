@@ -1,7 +1,7 @@
 angular.module('SimpleChat')
 	.factory('SimpleChatService', function($rootScope, Hub, simpleChatSignalrUrl){
 
-		 $rootScope.NickName = '';
+		$rootScope.NickName = '';
 		
      	return {
      		GetNickName: function(){
