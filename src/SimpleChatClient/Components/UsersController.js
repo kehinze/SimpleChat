@@ -15,6 +15,8 @@ angular.module('SimpleChat')
 		}
 
 		var onUsersReceived = function(users){
+			notificationService.info('emittinh user to parent');
+			$scope.$emit('UsersReceived', users);
 			$scope.Users = users;
 		};
 
