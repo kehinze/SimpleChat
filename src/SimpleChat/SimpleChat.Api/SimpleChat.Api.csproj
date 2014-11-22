@@ -122,12 +122,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Event\IEvent.cs" />
-    <Compile Include="Event\UserSubscribed.cs" />
+    <Compile Include="Events\ChatReceived.cs" />
+    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Events\UserSubscribed.cs" />
+    <Compile Include="Exceptions\MissingDataException.cs" />
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Messaging\SignalRPublisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\InMemoryUserRepository.cs" />
+    <Compile Include="Repository\User.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

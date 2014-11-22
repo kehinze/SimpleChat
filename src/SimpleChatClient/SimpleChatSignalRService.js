@@ -7,7 +7,7 @@ angular.module('SimpleChat')
 	                $rootScope.$broadcast(result.Type, result.Body);
 	            }
 	        },
-	        methods: ['SubscribeUser'],
+	        methods: ['SubscribeUser', 'SendMessageToUser'],
 	        rootPath: simpleChatSignalrUrl,
 	        errorHandler: function(error){
 	            console.error(error);
@@ -16,14 +16,18 @@ angular.module('SimpleChat')
 
 		var subscribeUser = function (nickName) {
 		    hub.SubscribeUser(nickName); 
-   		};		   
+   		};		
+
+   		var sendMessageToUser = function (userId, message) {
+		    hub.SendMessageToUser(userId, message); 
+   		};		    
 
      	return {
      		SubscribeUser: function(nickName){
 				return subscribeUser(nickName);
      		},
-     		SendMessage: function(message){
-     			return sendMessage(message);
+     		SendMessageToUser: function(userId, message){
+     			return sendMessageToUser(userId, message);
      		}
      	};
 	});

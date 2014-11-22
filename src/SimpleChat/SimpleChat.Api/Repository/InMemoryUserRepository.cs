@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SimpleChat.Api.Exceptions;
 
 namespace SimpleChat.Api.Repository
 {
-    public class User
-    {
-        public Guid ConnectionId { get; set; }
-        public string NickName { get; set; }
-    }
-
     public class InMemoryUserRepository
     {
-        private static readonly Dictionary<Guid, User> UserRepository = new Dictionary<Guid, User>(); 
+        private static readonly Dictionary<Guid, User> UserRepository = new Dictionary<Guid, User>();
+
+        public User Get(Guid userId)
+        {
+            if (UserRepository.ContainsKey(userId))
+                return UserRepository[userId];
+
+            throw new MissingDataException("The user you are looking for does not exist.");
+        }
 
         public void Add(User user)
         {
-            if(!UserRepository.ContainsKey(user.ConnectionId))
-                UserRepository.Add(user.ConnectionId, user);
+            if(!UserRepository.ContainsKey(user.Id))
+                UserRepository.Add(user.Id, user);
         }
 
         public void Remove(Guid connectionId)

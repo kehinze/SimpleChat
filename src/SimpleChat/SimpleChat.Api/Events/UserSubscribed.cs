@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace SimpleChat.Api.Event
+namespace SimpleChat.Api.Events
 {
     [DataContract(Name = "UserSubscribed")]
     public class UserSubscribed : IEvent
     {
-        [DataMember(Name = "ConnectionId")]
+        [DataMember(Name = "Id")]
         public Guid ConnectionId { get; protected set; }
 
         [DataMember(Name = "NickName")]

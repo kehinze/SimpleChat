@@ -1,0 +1,8 @@
+<div class="panel panel-default" ng-show="Chats.length != 0">
+  <div class="panel-heading">Chatting with {{user.NickName}}</div>
+  <div class="panel-body">
+    <div ng-repeat="chat in Chats">
+    	<strong>{{chat.FromNickName}}</strong><p>{{chat.Message}}</p>
+    </div>
+  </div>
+</div>

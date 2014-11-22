@@ -22,5 +22,9 @@ angular.module('SimpleChat')
 			notificationService.error(result.Message);
 		};
 
+		$scope.UserSelected = function(user){
+			$scope.$emit('UserSelected', user);
+		}
+
 		init();
 	});
